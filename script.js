@@ -485,11 +485,60 @@ class PhotoGallery {
     const currentFolder = this.getCurrentFolder();
     this.currentPhotos = this.photos[currentFolder] || [];
     this.currentPhotoIndex = index;
+    this.isZoomed = false;
 
     this.updatePhotoModal();
     this.setupTouchNavigation();
     this.setupModalClickHandler();
+    this.setupPhotoZoom();
     document.getElementById('photo-modal').classList.add('show');
+  }
+
+  // Setup photo zoom functionality
+  setupPhotoZoom() {
+    const modalImg = document.getElementById('modal-img');
+
+    modalImg.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.togglePhotoZoom();
+    });
+  }
+
+  // Toggle photo zoom
+  togglePhotoZoom() {
+    const modalImg = document.getElementById('modal-img');
+    const photoContainer = document.querySelector('.photo-container');
+    const zoomIndicator = document.getElementById('zoom-indicator');
+
+    if (!this.isZoomed) {
+      // Zoom in
+      modalImg.style.maxWidth = '150vw';
+      modalImg.style.maxHeight = '150vh';
+      modalImg.style.minWidth = '80vw';
+      modalImg.style.minHeight = '60vh';
+      modalImg.style.cursor = 'zoom-out';
+      modalImg.style.transform = 'scale(1.2)';
+      photoContainer.style.overflow = 'auto';
+      photoContainer.classList.add('zoomed');
+      if (zoomIndicator) {
+        zoomIndicator.innerHTML = '<i class="fas fa-search-minus"></i> Click to zoom out';
+      }
+      this.isZoomed = true;
+    } else {
+      // Zoom out
+      modalImg.style.maxWidth = '95vw';
+      modalImg.style.maxHeight = '85vh';
+      modalImg.style.minWidth = '400px';
+      modalImg.style.minHeight = '300px';
+      modalImg.style.cursor = 'zoom-in';
+      modalImg.style.transform = 'scale(1)';
+      photoContainer.style.overflow = 'visible';
+      photoContainer.classList.remove('zoomed');
+      if (zoomIndicator) {
+        zoomIndicator.innerHTML = '<i class="fas fa-search-plus"></i> Click to zoom';
+      }
+      this.isZoomed = false;
+    }
   }
 
   // Setup modal click handler to close on outside click
@@ -556,6 +605,22 @@ class PhotoGallery {
     const leftNav = document.querySelector('.modal-nav-left');
     const rightNav = document.querySelector('.modal-nav-right');
     const swipeIndicator = document.getElementById('swipe-indicator');
+    const zoomIndicator = document.getElementById('zoom-indicator');
+    const photoContainer = document.querySelector('.photo-container');
+
+    // Reset zoom state when switching photos
+    this.isZoomed = false;
+    photoContainer.classList.remove('zoomed');
+    modalImg.style.maxWidth = '95vw';
+    modalImg.style.maxHeight = '85vh';
+    modalImg.style.minWidth = '400px';
+    modalImg.style.minHeight = '300px';
+    modalImg.style.cursor = 'zoom-in';
+    modalImg.style.transform = 'scale(1)';
+    photoContainer.style.overflow = 'visible';
+    if (zoomIndicator) {
+      zoomIndicator.innerHTML = '<i class="fas fa-search-plus"></i> Click to zoom';
+    }
 
     // Update image and info
     modalImg.src = photo.src;
