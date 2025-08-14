@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery Manager</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header with navigation -->
+  <header class="header">
+    <div class="header-content">
+      <h1 class="logo">
+        <i class="fas fa-camera"></i>
+        Photo Gallery@MGniusEngineering
+      </h1>
+      <nav class="breadcrumb" id="breadcrumb">
+        <span class="breadcrumb-item active" onclick="navigateToPath(0)">
+          <i class="fas fa-home"></i> Home
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content area -->
+  <main class="main-content">
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <button class="btn btn-secondary" id="back-btn" onclick="goBack()" disabled>
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+        <button class="btn btn-primary" onclick="showCreateFolderModal()">
+          <i class="fas fa-folder-plus"></i> New Folder
+        </button>
+      </div>
+      <div class="toolbar-right">
+        <label class="btn btn-success upload-btn">
+          <i class="fas fa-upload"></i> Upload Photos
+          <input type="file" id="upload" accept="image/*" multiple onchange="uploadPhotos(event)" hidden>
+        </label>
+        <button class="btn btn-info" onclick="showManageModal()">
+          <i class="fas fa-cog"></i> Manage
+        </button>
+      </div>
+    </div>
+
+    <!-- Drop zone for drag and drop -->
+    <div class="drop-zone" id="drop-zone">
+      <div class="drop-zone-content">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p>Drag and drop photos here or click to upload</p>
+      </div>
+    </div>
+
+    <!-- Content grid -->
+    <div class="content-grid" id="content-grid">
+      <!-- Dynamic content will be inserted here -->
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <i class="fas fa-folder-open"></i>
+      <h3>This folder is empty</h3>
+      <p>Upload some photos or create a new folder to get started</p>
+      <button class="btn btn-primary" onclick="document.getElementById('upload').click()">
+        <i class="fas fa-upload"></i> Upload Photos
+      </button>
+    </div>
+  </main>
+
+  <!-- Photo viewer modal -->
+  <div class="modal" id="photo-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="photo-title">Photo</h3>
+        <button class="modal-close" onclick="closePhotoModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <button class="modal-nav modal-nav-left" onclick="prevPhoto()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="photo-container">
+          <img id="modal-img" src="" alt="Photo">
+          <div class="photo-info">
+            <span id="photo-counter">1 / 1</span>
+          </div>
+          <div class="swipe-indicator" id="swipe-indicator">
+            Swipe left/right or use arrow keys to navigate
+          </div>
+        </div>
+        <button class="modal-nav modal-nav-right" onclick="nextPhoto()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" onclick="deleteCurrentPhoto()">
+          <i class="fas fa-trash"></i> Delete
+        </button>
+        <button class="btn btn-secondary" onclick="downloadCurrentPhoto()">
+          <i class="fas fa-download"></i> Download
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create folder modal -->
+  <div class="modal" id="create-folder-modal">
+    <div class="modal-content modal-small">
+      <div class="modal-header">
+        <h3>Create New Folder</h3>
+        <button class="modal-close" onclick="closeCreateFolderModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="folder-name-input" placeholder="Enter folder name" class="form-input">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeCreateFolderModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="createFolder()">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rename folder modal -->
+  <div class="modal" id="rename-folder-modal">
+    <div class="modal-content modal-small">
+      <div class="modal-header">
+        <h3>Rename Folder</h3>
+        <button class="modal-close" onclick="closeRenameFolderModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="rename-folder-input" placeholder="Enter new folder name" class="form-input">
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeRenameFolderModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="renameFolder()">Rename</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Manage modal -->
+  <div class="modal" id="manage-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Manage Gallery</h3>
+        <button class="modal-close" onclick="closeManageModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="manage-section">
+          <h4>Data Management</h4>
+          <button class="btn btn-info" onclick="exportData()">
+            <i class="fas fa-download"></i> Export All Data
+          </button>
+          <label class="btn btn-info">
+            <i class="fas fa-upload"></i> Import Data
+            <input type="file" id="import-data" accept=".json" onchange="importData(event)" hidden>
+          </label>
+          <button class="btn btn-warning" onclick="clearAllData()">
+            <i class="fas fa-trash-alt"></i> Clear All Data
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeManageModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+

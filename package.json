@@ -1,0 +1,35 @@
+{
+  "name": "photo-gallery-manager",
+  "version": "1.0.0",
+  "description": "A modern, responsive web application for organizing and managing your photo collection",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o",
+    "dev": "npx http-server -p 8000 -o",
+    "serve": "npx http-server -p 8000",
+    "deploy": "./deploy.sh"
+  },
+  "keywords": [
+    "photo",
+    "gallery",
+    "manager",
+    "responsive",
+    "web-app",
+    "javascript",
+    "html5",
+    "css3"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/photo-gallery.git"
+  },
+  "homepage": "https://yourusername.github.io/photo-gallery",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Photo Viewer Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .feature-highlight {
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+        .feature-highlight h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .demo-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .demo-button:hover {
+            background: #5a6fd8;
+        }
+        .test-step {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+        .test-step h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .icon {
+            color: #667eea;
+            margin-right: 8px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        .feature-card h4 {
+            color: #667eea;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>📸 Enhanced Photo Viewer Test</h1>
+        
+        <div class="feature-highlight">
+            <h3>🎉 Enhanced Photo Viewing Experience</h3>
+            <p>The photo viewer now includes improved navigation controls, smooth transitions, touch/swipe support, and better mobile experience!</p>
+        </div>
+        
+        <a href="index.html" class="demo-button">🚀 Test Enhanced Photo Viewer</a>
+        
+        <h3>✨ New Features</h3>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>🖱️ Enhanced Navigation</h4>
+                <ul>
+                    <li>Larger, more visible navigation buttons</li>
+                    <li>Hover effects with color changes</li>
+                    <li>Auto-hide when only one photo</li>
+                    <li>Better positioning for mobile</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>📱 Touch & Swipe Support</h4>
+                <ul>
+                    <li>Swipe left/right to navigate</li>
+                    <li>Touch-friendly controls</li>
+                    <li>Mobile-optimized layout</li>
+                    <li>Visual swipe indicators</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>🎨 Smooth Transitions</h4>
+                <ul>
+                    <li>Fade effects between photos</li>
+                    <li>Loading states</li>
+                    <li>Smooth hover animations</li>
+                    <li>Professional feel</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h4>⌨️ Keyboard Navigation</h4>
+                <ul>
+                    <li>← → arrow keys to navigate</li>
+                    <li>Esc to close viewer</li>
+                    <li>Works in all browsers</li>
+                    <li>Accessible design</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3>📋 Test Instructions</h3>
+        
+        <div class="test-step">
+            <h3><span class="icon">1️⃣</span>Upload Test Photos</h3>
+            <ul>
+                <li>Open the photo gallery application</li>
+                <li>Navigate to any folder (or create a new one)</li>
+                <li>Upload multiple photos (at least 3-5 for best testing)</li>
+                <li>Ensure photos are of different sizes and orientations</li>
+            </ul>
+        </div>
+        
+        <div class="test-step">
+            <h3><span class="icon">2️⃣</span>Test Desktop Navigation</h3>
+            <ul>
+                <li>Click on any photo to open the viewer</li>
+                <li>Use the large navigation buttons (< and >) to browse</li>
+                <li>Test keyboard navigation with arrow keys</li>
+                <li>Notice the smooth transitions between photos</li>
+                <li>Check the photo counter updates correctly</li>
+            </ul>
+        </div>
+        
+        <div class="test-step">
+            <h3><span class="icon">3️⃣</span>Test Mobile Experience</h3>
+            <ul>
+                <li>Open on mobile device or use browser dev tools</li>
+                <li>Test swipe gestures (left/right) to navigate</li>
+                <li>Check that navigation buttons are properly sized</li>
+                <li>Verify swipe indicator appears on mobile</li>
+                <li>Test touch interactions</li>
+            </ul>
+        </div>
+        
+        <div class="test-step">
+            <h3><span class="icon">4️⃣</span>Test Edge Cases</h3>
+            <ul>
+                <li>Open viewer with only one photo (navigation should hide)</li>
+                <li>Test with very large images</li>
+                <li>Test with very small images</li>
+                <li>Try rapid navigation (clicking quickly)</li>
+                <li>Test closing with Esc key and click outside</li>
+            </ul>
+        </div>
+        
+        <div class="test-step">
+            <h3><span class="icon">5️⃣</span>Test All Controls</h3>
+            <ul>
+                <li>Delete button functionality</li>
+                <li>Download button functionality</li>
+                <li>Close button (X) in header</li>
+                <li>Click outside modal to close</li>
+                <li>Photo title and counter display</li>
+            </ul>
+        </div>
+        
+        <h3>🎯 Expected Behavior</h3>
+        
+        <div class="feature-highlight">
+            <h4>✅ What Should Work:</h4>
+            <ul>
+                <li><strong>Smooth Navigation:</strong> Photos change with smooth transitions</li>
+                <li><strong>Responsive Design:</strong> Works perfectly on all screen sizes</li>
+                <li><strong>Touch Support:</strong> Swipe gestures work on mobile</li>
+                <li><strong>Keyboard Support:</strong> Arrow keys and Esc work reliably</li>
+                <li><strong>Visual Feedback:</strong> Buttons highlight on hover</li>
+                <li><strong>Smart Hiding:</strong> Navigation hides when not needed</li>
+                <li><strong>Loading States:</strong> Images fade in when loaded</li>
+                <li><strong>Accessibility:</strong> Screen reader friendly</li>
+            </ul>
+        </div>
+        
+        <h3>📱 Mobile-Specific Features</h3>
+        <ul>
+            <li><strong>Swipe Indicator:</strong> Shows "Swipe left/right" hint</li>
+            <li><strong>Touch-Friendly Buttons:</strong> Larger touch targets</li>
+            <li><strong>Optimized Layout:</strong> Better use of screen space</li>
+            <li><strong>Gesture Recognition:</strong> Distinguishes swipe from scroll</li>
+        </ul>
+        
+        <a href="index.html" class="demo-button">🎯 Start Testing Photo Viewer</a>
+        
+        <div class="feature-highlight">
+            <h3>💡 Pro Tips for Testing</h3>
+            <ul>
+                <li>Test with photos of different aspect ratios</li>
+                <li>Try both portrait and landscape orientations</li>
+                <li>Test on different devices and browsers</li>
+                <li>Check performance with large image files</li>
+                <li>Verify all navigation methods work consistently</li>
+            </ul>
+        </div>
+        
+        <p style="text-align: center; color: #666; margin-top: 30px;">
+            <strong>Ready to test?</strong> The enhanced photo viewer provides a professional, smooth experience across all devices!
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder Rename Feature Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-step {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+        }
+        .test-step h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .feature-highlight {
+            background: #e7f3ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+        .feature-highlight h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        .demo-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        .demo-button:hover {
+            background: #5a6fd8;
+        }
+        .icon {
+            color: #667eea;
+            margin-right: 8px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>📝 Folder Rename Feature Test</h1>
+        
+        <div class="feature-highlight">
+            <h3>🎉 New Feature: Dynamic Folder Renaming</h3>
+            <p>You can now rename any folder in your photo gallery! The system automatically updates all references, paths, and maintains data integrity.</p>
+        </div>
+        
+        <a href="index.html" class="demo-button">🚀 Test the Rename Feature</a>
+        
+        <h3>📋 Test Steps</h3>
+        
+        <div class="test-step">
+            <h3><span class="icon">1️⃣</span>Create Test Folders</h3>
+            <ul>
+                <li>Open the photo gallery application</li>
+                <li>Create a new folder called "Test Folder"</li>
+                <li>Navigate into "Test Folder"</li>
+                <li>Create a subfolder called "Subfolder 1"</li>
+                <li>Upload some test photos to both folders</li>
+            </ul>
+        </div>
+        
+        <div class="test-step">
+            <h3><span class="icon">2️⃣</span>Test Rename Functionality</h3>
+            <ul>
+                <li>Hover over "Test Folder" to see action buttons</li>
+                <li>Click the <strong>edit icon (pencil)</strong> to rename</li>
+                <li>Change the name to "Renamed Folder"</li>
+                <li>Press Enter or click "Rename"</li>
+                <li>Verify the folder name changed in the interface</li>
+            </ul>
+        </div>
+        
+        <div class="test-step">
+            <h3><span class="icon">3️⃣</span>Verify Data Integrity</h3>
+            <ul>
+                <li>Navigate into the renamed folder</li>
+                <li>Check that all photos are still there</li>
+                <li>Check that subfolders are still accessible</li>
+                <li>Navigate back and forth to ensure paths work correctly</li>
+                <li>Check breadcrumb navigation updates properly</li>
+            </ul>
+        </div>
+        
+        <div class="test-step">
+            <h3><span class="icon">4️⃣</span>Test Edge Cases</h3>
+            <ul>
+                <li>Try renaming to an existing folder name (should show error)</li>
+                <li>Try renaming with empty name (should show error)</li>
+                <li>Try renaming the same name (should close modal)</li>
+                <li>Test keyboard shortcuts: Enter to confirm, Esc to cancel</li>
+                <li>Rename a folder while inside a subfolder</li>
+            </ul>
+        </div>
+        
+        <div class="test-step">
+            <h3><span class="icon">5️⃣</span>Test Persistence</h3>
+            <ul>
+                <li>Refresh the page after renaming</li>
+                <li>Verify renamed folders persist correctly</li>
+                <li>Export data and check JSON structure</li>
+                <li>Import data and verify everything works</li>
+            </ul>
+        </div>
+        
+        <h3>✨ Key Features to Test</h3>
+        <ul>
+            <li><strong>Visual Feedback:</strong> Edit button appears on hover</li>
+            <li><strong>Modal Interface:</strong> Clean rename dialog with pre-filled current name</li>
+            <li><strong>Keyboard Support:</strong> Enter to confirm, Esc to cancel</li>
+            <li><strong>Validation:</strong> Prevents duplicate names and empty names</li>
+            <li><strong>Path Updates:</strong> Automatically updates current navigation path</li>
+            <li><strong>Reference Updates:</strong> All folder references update automatically</li>
+            <li><strong>Data Integrity:</strong> Photos and subfolders move with renamed folder</li>
+            <li><strong>Persistence:</strong> Changes save to localStorage immediately</li>
+        </ul>
+        
+        <h3>🎨 UI Improvements</h3>
+        <ul>
+            <li><strong>Color-coded buttons:</strong> Blue for edit, red for delete</li>
+            <li><strong>Hover effects:</strong> Buttons appear smoothly on hover</li>
+            <li><strong>Responsive design:</strong> Works on mobile and desktop</li>
+            <li><strong>Accessibility:</strong> Proper focus management and keyboard navigation</li>
+        </ul>
+        
+        <a href="index.html" class="demo-button">🎯 Start Testing Now</a>
+        
+        <div class="feature-highlight">
+            <h3>💡 Pro Tips</h3>
+            <ul>
+                <li>The rename feature works at any folder level</li>
+                <li>You can rename folders even while browsing inside them</li>
+                <li>All data relationships are preserved during rename</li>
+                <li>The system prevents naming conflicts automatically</li>
+                <li>Use keyboard shortcuts for faster workflow</li>
+            </ul>
+        </div>
+        
+        <p style="text-align: center; color: #666; margin-top: 30px;">
+            <strong>Ready to test?</strong> Click the button above to open the photo gallery and try the new rename feature!
+        </p>
+    </div>
+</body>
+</html>
